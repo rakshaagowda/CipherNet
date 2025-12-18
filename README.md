@@ -40,7 +40,7 @@ Each message is encrypted using a **unique AES session key**, and this key is en
 ## 🧠 System Architecture
 ![Architecture](assets/architecture.svg)
 
----
+```mermaid
 flowchart LR
     A[Sender] -->|Plain Message| B[AES Encryption]
     B -->|Encrypted Message| C[RSA Encrypt AES Key]
@@ -48,21 +48,27 @@ flowchart LR
     D -->|Forward Payload| E[Receiver]
     E -->|RSA Decrypt AES Key| F[AES Decryption]
     F -->|Plain Message| G[Chat Interface]
+```
+## 🔄 Encryption Workflow
+![Flowchart](assets/architecture.svg)
 
+```mermaid
 sequenceDiagram
     participant Sender
     participant Server
     participant Receiver
 
-   Sender->>Sender: Generate AES Session Key
-   Sender->>Sender: Encrypt Message using AES
-   Sender->>Sender: Encrypt AES Key using Receiver's RSA Public Key
-   Sender->>Server: Send Encrypted Message + Encrypted AES Key
-   Server->>Receiver: Forward Encrypted Payload
-   Receiver->>Receiver: Decrypt AES Key using RSA Private Key
-  Receiver->>Receiver: Decrypt Message using AES
-    
-  Receiver->>Receiver: Display Message in UI
+    Sender->>Sender: Generate AES Session Key
+    Sender->>Sender: Encrypt Message using AES
+    Sender->>Sender: Encrypt AES Key using Receiver's RSA Public Key
+    Sender->>Server: Send Encrypted Message + Encrypted AES Key
+    Server->>Receiver: Forward Encrypted Payload
+    Receiver->>Receiver: Decrypt AES Key using RSA Private Key
+    Receiver->>Receiver: Decrypt Message using AES
+    Receiver->>Receiver: Display Message in UI
+```
+## 🔍 Encryption Sequence
+![Sequence](assets/sequence-diagram.svg)
 
   | Layer               | Technologies                  |
 | ------------------- | ----------------------------- |
