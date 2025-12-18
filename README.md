@@ -1,65 +1,141 @@
-# Secure Chat Application Using RSA and AES
+# 🔐 CipherNet — Secure Chat Application Using RSA & AES
 
-## 📋 Objective
-To design and develop a secure chat application that ensures end-to-end encrypted communication by using hybrid cryptography combining **RSA** for key exchange and **AES** for data encryption.
+<p align="center">
+  <img src="https://img.shields.io/badge/Encryption-AES--256%20%7C%20RSA--2048-red?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20Vite-black?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Backend-Node.js%20%7C%20Socket.io-darkred?style=for-the-badge"/>
+</p>
+
+<p align="center">
+  <b>End-to-End Encrypted Real-Time Chat Application</b><br/>
+  <i>Hybrid Cryptography • Modern UI • Educational BTS Visualization</i>
+</p>
+
+---
+
+## 📌 Objective
+To design and develop a **secure real-time chat application** that ensures **end-to-end encrypted communication** using **hybrid cryptography**, combining:
+
+- 🔑 **RSA** for secure key exchange  
+- 🔒 **AES** for fast and efficient message encryption  
+
+---
 
 ## 👥 Team Members
 | Name | Role |
 |------|------|
-| **Raksha B R** | Team Member |
-| **Rashmi R Pai** | Team Member |
-| **Smitha M Dodmane** | Team Member |
+| **Raksha B R** | Developer |
+| **Rashmi R Pai** | Developer |
+| **Smitha M Dodmane** | Developer |
+
+---
 
 ## 📄 Abstract
-In today’s digital environment, secure communication has become essential due to the increasing risks of data breaches, eavesdropping, and unauthorized access. This project proposes a **Secure Chat Application** that ensures end-to-end confidentiality and integrity of messages using a hybrid cryptographic model combining **AES (Advanced Encryption Standard)** and **RSA (Rivest–Shamir–Adleman)** algorithms.
+With the rapid growth of digital communication, ensuring confidentiality and integrity of messages has become critical. **CipherNet** implements a **hybrid cryptographic model** combining **AES (Advanced Encryption Standard)** and **RSA (Rivest–Shamir–Adleman)** to provide strong end-to-end security.
 
-- **AES**: A symmetric-key cipher, providing fast and efficient encryption for message content.
-- **RSA**: An asymmetric-key algorithm, securely encrypting and exchanging the AES session keys.
+Each message is encrypted using a **unique AES session key**, and this key is encrypted using the **receiver’s RSA public key**. This approach combines the **speed of AES** with the **secure key exchange of RSA**, ensuring protection against eavesdropping, replay attacks, and man-in-the-middle (MITM) attacks.
 
-This hybrid approach leverages the speed of AES and the strong key distribution security of RSA to create a robust communication system.
+---
 
-The application enables users to:
-1. Generate public–private key pairs.
-2. Exchange public keys.
-3. Perform encrypted messaging over a network.
+## 🧠 System Architecture
+![Architecture](assets/architecture.svg)
 
-Each message is encrypted with a freshly generated AES key, which is subsequently encrypted using the receiver’s RSA public key to ensure secure key transmission. This design ensures that even if network packets are intercepted, the attacker cannot retrieve the plaintext message or the session key. Additionally, message integrity and authentication mechanisms are implemented to prevent tampering and impersonation.
+---
 
-The project demonstrates the practical implementation of modern cryptographic techniques in real-time communication systems. It highlights secure key management, encrypted data transmission, and protection against common attacks such as man-in-the-middle (MITM), replay attacks, and eavesdropping.
+## 🔄 Encryption Workflow (Flow Chart)
 
-## 🛠️ Technology Stack
-- **Frontend**: React, Vite, Tailwind CSS (Dark Red/Black Theme), Framer Motion
-- **Backend**: Node.js, Express, Socket.io, SQLite
-- **Cryptography**: `node-forge` (RSA & AES implementation)
+```mermaid
+flowchart LR
+    A[Sender] -->|Plain Message| B[AES Encryption]
+    B -->|Encrypted Message| C[RSA Encrypt AES Key]
+    C -->|Encrypted Payload| D[Server]
+    D -->|Forward Payload| E[Receiver]
+    E -->|RSA Decrypt AES Key| F[AES Decryption]
+    F -->|Plain Message| G[Chat Interface]
+🔍 Encryption Sequence Diagram
 
-## 🚀 Getting Started
 
-### Prerequisites
-- Node.js installed
+mermaid
+Copy code
+sequenceDiagram
+    participant Sender
+    participant Server
+    participant Receiver
 
-### Installation & Run
+    Sender->>Sender: Generate AES Session Key
+    Sender->>Sender: Encrypt Message using AES
+    Sender->>Sender: Encrypt AES Key using Receiver's RSA Public Key
+    Sender->>Server: Send Encrypted Message + Encrypted AES Key
+    Server->>Receiver: Forward Encrypted Payload
+    Receiver->>Receiver: Decrypt AES Key using RSA Private Key
+    Receiver->>Receiver: Decrypt Message using AES
+    Receiver->>Receiver: Display Message in UI
+🧰 Tech Stack
+Layer	Technologies
+🖥️ Frontend	React • Vite • Tailwind CSS
+⚙️ Backend	Node.js • Express • Socket.io
+🗄️ Database	SQLite
+🔐 Cryptography	RSA • AES • node-forge
 
-1. **Start Backend Server**
-   ```bash
-   cd server
-   npm install
-   node index.js
-2.Start Frontend Client
+🧪 Behind The Scenes (BTS) — Encryption Breakdown
+<details> <summary><b>🔓 Click to view encryption steps</b></summary>
+Step 1: AES Session Key Generation
+A random AES-256 key is generated per message.
 
+Step 2: Message Encryption
+Plaintext message → encrypted using AES.
+
+Step 3: Key Protection
+AES key is encrypted using the receiver’s RSA public key.
+
+Step 4: Transmission
+Encrypted message + encrypted AES key are sent via server.
+
+Step 5: Decryption
+Receiver decrypts AES key using RSA private key and decrypts message using AES.
+
+🔐 Result: Only the intended receiver can read the message.
+
+</details>
+🚀 Getting Started
+Prerequisites
+Node.js (v16+)
+
+Git
+
+Installation & Run
+bash
+Copy code
+# Backend
+cd server
+npm install
+node index.js
+bash
+Copy code
+# Frontend
 cd frontend
 npm install
 npm run dev
+Open:
 
+arduino
+Copy code
+http://localhost:5173
+🎓 Educational Value
+✔ Demonstrates hybrid cryptography
+✔ Visualizes encryption internally (BTS)
+✔ Ideal for cryptography courses, final-year projects & viva
 
-Access Application
-Open http://localhost:5173 in your browser. Open a second window in Incognito mode to simulate a second user.
+🔮 Future Enhancements
+Digital signatures for authenticity
 
-✨ Features
+Hash-based integrity checks
 
-End-to-End Encryption: Hybrid AES-256 + RSA-2048.
+Cloud deployment
 
-Behind-The-Scenes Visualization: Interactive modal showing the encryption steps for education/demo purposes.
+Mobile-friendly UI
 
-Real-Time Messaging: Instant delivery via Socket.io.
+📜 License
+Developed strictly for academic and educational purposes.
 
-Modern UI: Hacker/Cyber aesthetic with neon glows and glassmorphism.
+<p align="center"> 🔐 <b>CipherNet — Where Security Meets Simplicity</b> 🔐 </p> ```
