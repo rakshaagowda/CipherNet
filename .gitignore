@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+package-lock.json
+# (Keep package-lock if you want lockfiles, but some prefer ignoring. Standard is to KEEP lockfiles. I will NOT ignore package-lock.json, mistakenly added to comment)
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Frontend Build Outputs
+dist/
+build/
+coverage/
+
+# OS
+Thumbs.db

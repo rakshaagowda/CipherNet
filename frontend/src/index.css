@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --surface: #121212;
+  --primary: #ff0033;
+  --primary-dark: #cc0000;
+}
+
+body {
+  background-color: var(--background);
+  color: white;
+  margin: 0;
+  overflow: hidden; /* No scroll per requirements */
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Scrollbar for inner elements */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+  border-radius: 3px;
+}
