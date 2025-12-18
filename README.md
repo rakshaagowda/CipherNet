@@ -44,20 +44,22 @@ The project demonstrates the practical implementation of modern cryptographic te
    cd server
    npm install
    node index.js
-   ```
+2.Start Frontend Client
 
-2. **Start Frontend Client**
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
+cd frontend
+npm install
+npm run dev
 
-3. **Access Application**
-   Open `http://localhost:5173` in your browser. Open a second window in Incognito mode to simulate a second user.
 
-## ✨ Features
-- **End-to-End Encryption**: Hybrid AES-256 + RSA-2048.
-- **Behind-The-Scenes Visualization**: Interactive modal showing the encryption steps for education/demo purposes.
-- **Real-Time Messaging**: Instant delivery via Socket.io.
-- **Modern UI**: "Hacker/Cyber" aesthetic with neon glows and glassmorphism.
+Access Application
+Open http://localhost:5173 in your browser. Open a second window in Incognito mode to simulate a second user.
+
+✨ Features
+
+End-to-End Encryption: Hybrid AES-256 + RSA-2048.
+
+Behind-The-Scenes Visualization: Interactive modal showing the encryption steps for education/demo purposes.
+
+Real-Time Messaging: Instant delivery via Socket.io.
+
+Modern UI: Hacker/Cyber aesthetic with neon glows and glassmorphism.
